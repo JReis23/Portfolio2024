@@ -138,23 +138,30 @@
 	ul {
 		padding: 4rem 4rem;
 	}
+
+	li {
+		&::before {
+			content: none;
+		}
+	}
+
 	a {
 		display: inline-block;
 		transition-duration: 0.5s;
+
+		&:hover {
+			transform: translateY(-5px);
+			color: var(--contrast-color);
+		}
 	}
 
-	a:hover {
-		transform: translateY(-5px);
-		color: var(--green);
-	}
-
-	svg {
-		fill: var(--slate);
+	a svg {
+		fill: var(--text);
 		width: 1.5rem;
-	}
 
-	svg:hover {
-		fill: var(--green);
+		&:hover {
+			fill: var(--contrast-color);
+		}
 	}
 
 	@media (max-width: 768px) {

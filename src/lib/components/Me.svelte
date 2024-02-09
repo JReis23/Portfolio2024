@@ -66,13 +66,13 @@
 		padding-top: 3rem;
 	}
 
-	img {
-		border-radius: 5px;
-		z-index: 1;
-		position: relative;
-		max-width: 15rem;
+	ul li {
+		&::before {
+			content: '▹';
+			color: var(--contrast-color);
+			margin-right: 1.175rem;
+		}
 	}
-
 	picture {
 		position: relative;
 		display: inline-block;
@@ -80,7 +80,7 @@
 		border-radius: 5px;
 		z-index: 1;
 
-		& :before {
+		&::before {
 			content: '';
 			border: 1px solid var(--contrast-color);
 			position: absolute;
@@ -92,9 +92,9 @@
 			border-radius: 5px;
 		}
 
-		& :after {
+		&::after {
 			content: '';
-			background: rgba(var(--rgba-green), 0.3);
+			background: var(--contrast-color-transparent);
 			position: absolute;
 			display: block;
 			width: 100%;
@@ -105,25 +105,30 @@
 			z-index: 1;
 		}
 
-		& :hover {
+		&:hover {
 			transition: 0.5s ease-in-out;
 			transform: translateY(-3px);
 		}
 
-		& :hover::before {
+		&:hover::before {
 			transition: 0.5s ease-in-out;
-
 			transform: translateY(-5px);
 			transform: translateX(-5px);
 		}
 
-		& :hover::after {
+		&:hover::after {
 			background: none;
 			transition: 0.5s ease-in-out;
 			transform: translateY(-3px);
 		}
 	}
 
+	img {
+		border-radius: 5px;
+		z-index: 1;
+		position: relative;
+		max-width: 15rem;
+	}
 	@media (max-width: 768px) {
 		.photo {
 			display: flex;

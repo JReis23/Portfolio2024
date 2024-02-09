@@ -179,21 +179,21 @@
 		max-width: 50ch;
 		font-size: 1.175em;
 		padding: auto;
-	}
 
-	li::before {
-		content: '▹';
-		color: rgba(88, 227, 197, 1);
-		margin-right: 1.175rem;
+		&::before {
+			content: '▹';
+			color: rgba(88, 227, 197, 1);
+			margin-right: 1.175rem;
+		}
 	}
 
 	a:hover::before {
 		content: '';
 		position: absolute;
 		left: 0;
-		bottom: 0.775rem;
+		bottom: 0;
 		width: 0;
-		border-bottom: solid 1px var(--green);
+		border-bottom: solid 1px var(--contrast-color);
 		animation: border_anim 0.7s forwards;
 	}
 

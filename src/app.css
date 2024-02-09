@@ -8,7 +8,7 @@
 	--h1-text: hsl(226, 70%, 88%);
 	/* --white: hsl(214, 100%, 95%); */
 	--contrast-color: hsl(166, 100%, 70%);
-	/* --rgba-green: 100, 255, 218; */
+	--contrast-color-transparent: hsla(166, 100%, 70%, 0.3);
 }
 
 :root([class='dark']) {
@@ -34,7 +34,7 @@
 * {
 	margin: 0;
 	padding: 0;
-	font-family: 'Source Code Pro', monospace;
+
 	font-size: 16px;
 }
 
@@ -50,6 +50,8 @@ body {
 	justify-content: center;
 	align-items: center;
 	flex-flow: column;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
 	min-height: 100dvh;
 }
 
@@ -59,6 +61,14 @@ svg,
 video {
 	display: block;
 	max-width: 100%;
+}
+
+section,
+article {
+	padding: 4rem 0;
+	max-width: 1000px;
+	width: 100%;
+	height: 100dvh;
 }
 
 li {
@@ -71,8 +81,25 @@ li {
 	}
 }
 
+a {
+	color: var(--contrast-color);
+}
+
+span {
+	color: var(--contrast-color);
+}
+
 h1 {
 	color: var(--h1-text);
+	font-family: 'Source Code Pro', monospace;
+	font-weight: 300;
+}
+
+h2 {
+	color: var(--contrast-color);
+	font-weight: 400;
+	font-size: clamp(1.5rem, 2vw, 3rem);
+	font-family: 'Source Code Pro', monospace;
 }
 
 h3 {

@@ -22,16 +22,10 @@
 </article>
 
 <style>
-	.container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
 	div {
 		position: absolute;
-		width: 90px;
-		height: 51px;
+		width: 360px;
+		height: 204px;
 	}
 
 	div:nth-of-type(2) {
@@ -51,33 +45,33 @@
 		position: absolute;
 		width: 4px;
 		height: 0%;
-		background: #053146;
+		background: var(--contrast-color);
 		z-index: 999999;
 	}
 
 	.h1 {
 		left: 0;
-		animation: load1 7.2s ease infinite;
+		animation: load1 22.5s ease infinite;
 	}
 	.h2 {
 		right: 0;
-		animation: load2 7.2s ease 0.6s infinite;
+		animation: load2 22.5s ease 2s infinite;
 	}
 	.h3 {
 		right: 0;
-		animation: load3 7.2s ease 1.2s infinite;
+		animation: load3 22.5s ease 4s infinite;
 	}
 	.h4 {
 		right: 0;
-		animation: load4 7.2s ease 1.8s infinite;
+		animation: load4 22.5s ease 6s infinite;
 	}
 	.h5 {
 		left: 0;
-		animation: load5 7.2s ease 2.4s infinite;
+		animation: load5 22.5s ease 8s infinite;
 	}
 	.h6 {
 		left: 0;
-		animation: load6 7.2s ease 3s infinite;
+		animation: load6 22.5s ease 10s infinite;
 	}
 
 	@keyframes load1 {

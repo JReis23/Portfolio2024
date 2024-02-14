@@ -18,14 +18,14 @@
 
 <style>
 	.active {
-		border-left: 3px solid var(--green) !important;
+		border-left: 3px solid var(--contrast-color);
 		outline: none;
-		color: var(--green) !important;
+		color: var(--contrast-color);
 	}
 
 	.primary {
-		border: 1px solid var(--green);
-		color: var(--green);
+		border: 1px solid var(--contrast-color);
+		color: var(--contrast-color);
 		display: flex;
 		align-items: center;
 		border-radius: 3px;
@@ -33,15 +33,15 @@
 		font-size: 0.8rem;
 		transition: all 0.3s ease-in-out;
 		width: fit-content;
-	}
 
-	.primary:hover {
-		background: rgba(var(--rgba-green), 0.2);
+		&:hover {
+			background: var(--contrast-color-transparent);
+		}
 	}
 
 	.primary-main {
-		border: 1px solid var(--green);
-		color: var(--green);
+		border: 1px solid var(--contrast-color);
+		color: var(--contrast-color);
 		display: flex;
 		align-items: center;
 		border-radius: 3px;
@@ -49,28 +49,36 @@
 		font-size: 0.875rem;
 		transition: all 0.3s ease-in-out;
 		width: fit-content;
-	}
 
-	.primary-main:hover {
-		background: rgba(var(--rgba-green), 0.2);
+		&:hover {
+			background: var(--contrast-color-transparent);
+		}
 	}
 
 	.secondary {
-		color: var(--slate);
-		font-family: Fira Code Light;
+		color: var(--text);
 		padding: 0.5rem 0.9rem;
 		text-align: center;
 		width: fit-content;
-		border-left: solid 1px var(--slate);
+		border-left: solid 1px var(--text);
 		font-size: 0.875rem;
-	}
-	.secondary:hover {
-		background: rgba(var(--rgba-green), 0.2);
+
+		&:hover {
+			background: var(--contrast-color-transparent);
+			border-left: solid 2px var(--contrast-color);
+			color: var(--contrast-color);
+		}
+
+		&:focus {
+			background: var(--contrast-color-transparent);
+			border-left: solid 2px var(--contrast-color);
+			color: var(--contrast-color);
+		}
 	}
 
 	.third {
-		border: 1px solid var(--green);
-		color: var(--green);
+		border: 1px solid var(--contrast-color);
+		color: var(--contrast-color);
 		display: flex;
 		align-items: center;
 		border-radius: 25vh;
@@ -119,8 +127,8 @@
 	}
 
 	.submit {
-		border: 1px solid var(--green);
-		color: var(--green);
+		border: 1px solid var(--contrast-color);
+		color: var(--contrast-color);
 		display: flex;
 		align-items: center;
 		border-radius: 3px;
@@ -137,10 +145,10 @@
 
 	@media (max-width: 768px) {
 		.active {
-			border-bottom: 3px solid var(--green) !important;
+			border-bottom: 3px solid var(--contrast-color) !important;
 			border-left: none !important;
 			outline: none;
-			color: var(--green) !important;
+			color: var(--contrast-color) !important;
 		}
 		.secondary {
 			padding: 0.3rem 0.3rem;

@@ -4,41 +4,50 @@
 </script>
 
 <section id="index">
-	<div class="container">
-		<h2>Salut, je m'appelle</h2>
-		<h1>João Reis</h1>
-		<h3>et je suis développeur Web.</h3>
-		<p>
-			Je suis un développeur web spécialisé dans la création du front-end de tout site web, je
-			développe également des applications back-end à intégrer aux solutions front-end que je crée.
-			Après avoir obtenu mon diplôme, <span
-				>je suis maintenant à la recherche d'un poste de développeur Web.</span
-			>
-		</p>
+	<h2>Salut, je m'appelle</h2>
+	<h1>João Reis</h1>
+	<h3>et je suis développeur Web.</h3>
+	<p>
+		Je suis un développeur web spécialisé dans la création du front-end de tout site web, je
+		développe également des applications back-end à intégrer aux solutions front-end que je crée.
+		Après avoir obtenu mon diplôme, <span
+			>je suis maintenant à la recherche d'un poste de développeur Web.</span
+		>
+	</p>
 
-		<div class="button-main mt-16">
-			<Button
-				rel="external"
-				href="https://drive.google.com/uc?id=1UoEYh2pBT0SBUudj7mvpgtRU2A_-7D2_"
-				target="_blank"
-				type="primary-main"
-				>Regardez mon CV !
-			</Button>
-		</div>
+	<div>
+		<Button
+			rel="external"
+			href="https://drive.google.com/uc?id=1UoEYh2pBT0SBUudj7mvpgtRU2A_-7D2_"
+			target="_blank"
+			type="primary-main"
+			>Regardez mon CV !
+		</Button>
 	</div>
-	<Hexagon />
+	<!-- <div class="hex">
+		<Hexagon />
+	</div> -->
 </section>
 
 <style>
 	section {
 		display: flex;
 		justify-content: center;
-		flex-direction: row;
+		flex-direction: column;
+		width: 100vw;
 	}
 
-	.container {
-		width: 100%;
-	}
+	/* .hex {
+		position: absolute;
+		left: 65%; */
+	/* left: 10rem; */
+	/* top: 40%;
+		z-index: -1;
+	} */
+
+	/* .container {
+		width: 80%;
+	} */
 
 	h1 {
 		font-size: clamp(2.5rem, 8vw, 5rem);

@@ -155,6 +155,12 @@
 		}
 	}
 
+	.social {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+	}
+
 	a svg {
 		fill: var(--text);
 		width: 1.5rem;

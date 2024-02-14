@@ -53,6 +53,9 @@ body {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 300;
 	min-height: 100dvh;
+	letter-spacing: 0.1rem;
+	line-height: 2rem;
+	counter-reset: section;
 }
 
 img,
@@ -62,13 +65,50 @@ video {
 	display: block;
 	max-width: 100%;
 }
+button {
+	font-family: 'Source Code Pro', monospace;
+	color: var(--text);
+	display: inline-block;
+	text-align: center;
+	text-decoration: none;
+	white-space: pre;
+	background-color: inherit;
+	border: none;
+}
 
-section,
-article {
+section {
 	padding: 4rem 0;
 	max-width: 1000px;
 	width: 100%;
-	height: 100dvh;
+	min-height: 100dvh;
+}
+
+section .numbered-heading {
+	display: flex;
+	align-items: center;
+	position: relative;
+	padding: 2rem 0;
+	width: 100%;
+	white-space: nowrap;
+
+	&::before {
+		content: '0' counter(section) '.';
+		counter-increment: section 1;
+		color: var(--contrast-color);
+		font-size: 1.2rem;
+		margin-right: 1rem;
+	}
+
+	&::after {
+		content: '';
+		display: block;
+		position: relative;
+		top: -5px;
+		width: 40%;
+		height: 1px;
+		margin-left: 1.2rem;
+		background: var(--contrast-color);
+	}
 }
 
 li {
@@ -83,6 +123,7 @@ li {
 
 a {
 	color: var(--contrast-color);
+	text-decoration: none;
 }
 
 span {

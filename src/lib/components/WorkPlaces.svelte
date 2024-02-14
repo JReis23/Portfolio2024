@@ -1,5 +1,5 @@
 <script>
-	import Button from '../ui/Button.svelte';
+	import Button from '$lib/ui/Button.svelte';
 
 	export let societyButton = 'lectra';
 
@@ -26,8 +26,8 @@
 
 <section id="experience" class="workplaces">
 	<h2 class="numbered-heading">Où j'ai travaillé</h2>
-	<div class="flex flex-col md:flex-row">
-		<div class="buttons flex flex-row md:flex-col self-center">
+	<div class="container">
+		<div class="buttons-section">
 			<Button
 				on:click={handleLectra}
 				active={societyButton === 'lectra' ? 'active' : null}
@@ -46,7 +46,7 @@
 			<Button
 				on:click={handleRwf}
 				active={societyButton === 'rwf' ? 'active' : null}
-				type="secondary">Rural Web Factory</Button
+				type="secondary">RWF</Button
 			>
 			<Button
 				on:click={handlePatriarca}
@@ -54,15 +54,15 @@
 				type="secondary">Patriarca</Button
 			>
 		</div>
-		<div class="md:px-8">
+		<div class="text-container">
 			{#if societyButton === 'montauban'}
-				<div class="py-6">
+				<div class="text-section">
 					<h3>
 						Stagiaire <span
 							>@ <a href="https://www.montauban-renovation.com/" target="_blank">Montauban</a></span
 						>
 					</h3>
-					<p>février 2021 à mars 2021</p>
+					<p>Février 2021 à Mars 2021</p>
 				</div>
 				<ul>
 					<li>
@@ -76,7 +76,7 @@
 					<li>Élaboration du projet avec la méthodologie <span>Scrum Agile</span></li>
 				</ul>
 			{:else if societyButton === 'rwf'}
-				<div class="py-6">
+				<div class="text-section">
 					<h3>
 						Apprenant <span
 							>@ <a href="http://www.patriarca.fr" target="_blank">Rural Web Factory</a></span
@@ -94,7 +94,7 @@
 					</li>
 				</ul>
 			{:else if societyButton === 'patriarca'}
-				<div class="py-6">
+				<div class="text-section">
 					<h3>
 						Conducteur de travaux <span
 							>@ <a href="http://www.patriarca.fr" target="_blank">Patriarca</a></span
@@ -117,11 +117,11 @@
 					</li>
 				</ul>
 			{:else if societyButton === 'noveoo'}
-				<div class="py-6">
+				<div class="text-section">
 					<h3>
 						Développeur Web / Fondateur <span>@ <a href="/">Noveoo</a></span>
 					</h3>
-					<p>Septembre 2021 à <span>Présent</span></p>
+					<p>Septembre 2021 à 2022</p>
 				</div>
 				<ul>
 					<li>
@@ -137,7 +137,7 @@
 					</li>
 				</ul>
 			{:else if societyButton === 'lectra'}
-				<div class="py-6">
+				<div class="text-section">
 					<h3>
 						Développeur logiciel en JavaScript <span
 							>@ <a href="https://www.lectra.com/fr" target="_blank">Lectra France</a></span
@@ -166,25 +166,16 @@
 </section>
 
 <style>
+	section {
+		display: flex;
+		flex-flow: column;
+		justify-content: center;
+	}
 	a {
 		display: inline-block;
-		text-decoration: none;
 		position: relative;
-		font-size: 1.7rem;
+		font-size: 1.3rem;
 		color: var(--green);
-	}
-
-	li {
-		color: var(--slate);
-		max-width: 50ch;
-		font-size: 1.175em;
-		padding: auto;
-
-		&::before {
-			content: '▹';
-			color: rgba(88, 227, 197, 1);
-			margin-right: 1.175rem;
-		}
 	}
 
 	a:hover::before {
@@ -195,6 +186,34 @@
 		width: 0;
 		border-bottom: solid 1px var(--contrast-color);
 		animation: border_anim 0.7s forwards;
+	}
+
+	li {
+		color: var(--text);
+		max-width: 60ch;
+		font-size: 1.175em;
+		padding: auto;
+
+		&::before {
+			content: '▹';
+			color: var(--contrast-color-transparent);
+			margin-right: 1.175rem;
+		}
+	}
+
+	.container {
+		display: flex;
+		justify-content: space-between;
+		padding: 3rem 0;
+	}
+
+	.buttons-section {
+		display: flex;
+		flex-flow: column;
+	}
+
+	.text-container {
+		padding: 0 6rem 0 0;
 	}
 
 	@keyframes border_anim {

@@ -48,6 +48,11 @@
 </section>
 
 <style>
+	section {
+		display: flex;
+		flex-flow: column;
+		justify-content: center;
+	}
 	article {
 		display: flex;
 

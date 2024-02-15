@@ -4,7 +4,9 @@
 	import WorkPlaces from '$lib/components/WorkPlaces.svelte';
 	// import Projects from '../components/Projects.svelte';
 	import Social from '$lib/components/Social.svelte';
+
 	export let data;
+
 	console.log({ data });
 </script>
 

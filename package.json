@@ -29,7 +29,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"install": "^0.13.0",
 		"mongodb": "^6.3.0",
+		"ssh2-promise": "^1.0.3",
 		"tunnel-ssh": "^5.1.2"
 	}
 }

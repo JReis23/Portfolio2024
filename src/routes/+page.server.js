@@ -1,27 +1,12 @@
-import establishSSHTunnel from '../db/mongo.js';
+import { connectToMongoDB } from '../db/mongo.js';
 
-export async function load({ params }) {
+export async function load({ fetch }) {
 	try {
-		// Establish SSH tunnel
-		const server = await establishSSHTunnel();
-		console.log('SSH tunnel established');
-		// Once tunnel is established, connect to MongoDB
-		const client = await MongoClient.connect('mongodb://localhost:27017', {
-			useNewUrlParser: true,
-			useUnifiedTopology: true
-		});
-		const db = client.db('portfolio');
-		console.log('Connected to MongoDB');
-		console.log('Connected to MongoDB', db);
-
-		// Do whatever you need with the MongoDB connection here...
-
-		// Close the connection when done
-		await client.close();
-		console.log('MongoDB connection closed');
+		const client = await connectToMongoDB();
+		// Vous pouvez utiliser 'client' pour effectuer des opérations sur la base de données MongoDB
+		// Par exemple, fetch des données ou enregistrer des données dans la base de données
+		return { data: client };
 	} catch (error) {
-		console.error('Error:', error);
+		console.error('Erreur lors de la connexion à MongoDB : ', error);
 	}
-
-	// Additional SSR logic...
 }

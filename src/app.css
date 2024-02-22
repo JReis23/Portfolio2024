@@ -150,3 +150,14 @@ h3 {
 button {
 	border-color: var(--contrast-color);
 }
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	max-width: 75ch;
+	margin: 0;
+}
+
+input {
+}

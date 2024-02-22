@@ -1,8 +1,12 @@
 import { connectToMongoDB } from '$lib/db/mongo.js';
-import { contactFormSchema } from '$lib/formValidation.js';
-import { fail } from '@sveltejs/kit'
+import { contactFormSchema } from '$lib/contactFormValidation.js';
+import { fail } from '@sveltejs/kit';
+import { superValidate } from 'sveltekit-superforms';
+import { zod } from 'sveltekit-superforms/adapters';
 
 export async function load({ params }) {
+	const form = await superValidate(zod(contactFormSchema));
+
 	try {
 		// Connexion à la base de données MongoDB
 		const db = await connectToMongoDB('portfolio');
@@ -18,7 +22,8 @@ export async function load({ params }) {
 		);
 		// Retourner les données pour être utilisées dans le composant de la page
 		return {
-			serializedData
+			serializedData,
+			form
 		};
 	} catch (e) {
 		console.log('Error:', e);
@@ -27,54 +32,51 @@ export async function load({ params }) {
 
 export const actions = {
 	default: async ({ request }) => {
-		let filter;
-		let dataForm;
+		try {
+			const data = await request.formData();
+			const form = await superValidate(data, zod(contactFormSchema));
 
-		const data = await request.formData();
-		const formEntries = Object.fromEntries(data);
-		const validateForm = contactFormSchema.parse(formEntries)
+			let filter;
+			let dataForm;
 
-		if(!validateForm.sucess){
-			const data = {
-				data: formEntries,
-				errors: validateForm.error.flatten().fieldErrors
+			if (!form.valid) {
+				return fail(400, { form });
 			}
-			return fail(400, data)
-		}
-			console.log({validateForm})
+
 			const email = data.get('email');
 			const name = data.get('name');
 			const message = data.get('message');
+
 			const db = await connectToMongoDB('portfolio');
 			const contact = db.collection('contact');
-	
+
 			if (db) {
 				filter = { _id: 1, email: 1 };
 				const emailContact = contact.find().project(filter);
 				const emailArray = await emailContact.toArray();
-				const mappedEmail = emailArray.map(i => i.email)			
-				if(mappedEmail.includes(email)){
-					const pipeline = [
-						{$match: {email: email}},
-						{$project: {_id: 1}}
-					]
-					const aggregation = await contact.aggregate(pipeline).toArray()
-					const contactId = aggregation[0]._id
+				const mappedEmail = emailArray.map((i) => i.email);
+				if (mappedEmail.includes(email)) {
+					const pipeline = [{ $match: { email: email } }, { $project: { _id: 1 } }];
+					const aggregation = await contact.aggregate(pipeline).toArray();
+					const contactId = aggregation[0]._id;
 					const messages = db.collection('messages');
 					dataForm = { contactId: contactId, message };
 					messages.insertOne(dataForm);
-	
 				} else {
 					dataForm = {
-						email, name
-					}
+						email,
+						name
+					};
 					const dataSent = await contact.insertOne(dataForm);
 					const idFromDataSent = dataSent.insertedId;
 					const messages = db.collection('messages');
 					dataForm = { contactId: idFromDataSent, message };
 					messages.insertOne(dataForm);
 				}
-	
 			}
+			return { form };
+		} catch (error) {
+			console.log(error);
 		}
+	}
 };

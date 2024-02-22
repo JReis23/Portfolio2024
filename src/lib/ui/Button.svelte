@@ -11,7 +11,7 @@
 		<slot />
 	</a>
 {:else}
-	<button class="{type} {active}" on:click on:submit|preventDefault>
+	<button class="{type} {active}" on:click>
 		<slot />
 	</button>
 {/if}
